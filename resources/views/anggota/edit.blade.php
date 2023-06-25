@@ -1,95 +1,70 @@
-@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
-
-@section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Anggota'])
-    <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-12">
-                <div class="card mb-4">
-                    <div class="card-header pb-0">
-                        <a href="{{ route('home') }}">Dashboard/</a>
-                        <a href="{{ route('anggota.index') }}">Anggota</a>
-                        <h1>Tabel Pengguna</h1>
-                    </div>
-                    <div class="col-md-6">
-                        <!-- Tambahkan search bar di sini -->
-                        <form action="{{ route('anggota.index') }}" method="GET">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Cari anggota..." name="search" value="{{ request()->input('search') }}" id="searchInput">
-                                <input type="hidden" name="filter" value="{{ request()->input('filter') }}">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="submit">Cari</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="text-right">
-                            <a href="{{ route('anggota.create') }}" class="btn btn-primary">Tambah Anggota</a>
-                        </div>
-                    </div>
-                    <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">ID</th>
-                                        <th class="text-center">Nama</th>
-                                        <th class="text-center">Nomor Telepon</th>
-                                        <th class="text-center">Email</th>
-                                        <th class="text-center">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($anggotas as $anggota)
-                                    <tr>
-                                        <td class="text-center">{{ $anggota->id_anggota }}</td>
-                                        <td class="text-center">{{ $anggota->nama }}</td>
-                                        <td class="text-center">{{ $anggota->nomor_telepon }}</td>
-                                        <td class="text-center">{{ $anggota->email }}</td>
-                                        <td>
-                                            <div class="d-flex justify-content-center">
-                                                <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}" class="btn btn-info">Detail</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Anggota</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      body {
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="{{ route('home') }}">Dashboard/</a>
+      <a href="{{ route('anggota.index') }}">Anggota/</a>
+      <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}">{{ $anggota->nama }}/</a>
+      <a href="">Edit</a>
+      <h1>Edit Anggota</h1>
+      <br/>
+      <form method="POST" action="{{ route('anggota.update', $anggota->id_anggota) }}">
+        @csrf
+        @method('PUT')
+        <div class="form-group">
+          <label for="nama">Nama:</label>
+          <input type="text" class="form-control" id="nama" name="nama" value="{{ $anggota->nama }}" required>
         </div>
-        @include('layouts.footers.auth.footer')
-    </div>
-    <script>
-        $(document).ready(function() {
-            $('#searchInput').on('input', function() {
-                var input, filter, table, tr, td, i, txtValue;
-                input = $(this).val();
-                filter = input.toLowerCase();
-                table = $("table");
-                tr = table.find('tbody tr'); // Ubah hanya mencari tr di dalam tbody
-                tr.each(function() {
-                    var match = false;
-                    $(this).find('td').each(function() {
-                        td = $(this);
-                        if (td) {
-                            txtValue = td.text().toLowerCase();
-                            if (txtValue.indexOf(filter) > -1) {
-                                match = true;
-                                return false; // Berhenti perulangan saat ada kecocokan
-                            }
-                        }
-                    });
-                    if (match) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
+        <div class="form-group">
+          <label for="alamat">Alamat:</label>
+          <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $anggota->alamat }}" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" value="{{ $anggota->email }}" required>
+        </div>
+        <div class="form-group">
+          <label for="nomor_telepon">Nomor Telepon:</label>
+          <input type="text" class="form-control" id="nomor_telepon" name="nomor_telepon" value="{{ $anggota->nomor_telepon }}" required>
+        </div>
+        <div class="form-group">
+          <label for="tanggal_bergabung">Tanggal Bergabung:</label>
+          <input type="date" class="form-control" id="tanggal_bergabung" name="tanggal_bergabung" value="{{ $anggota->tanggal_bergabung }}" required>
+        </div>
+        <div class="text-right">
+          <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}" class="btn btn-secondary">Batal</a>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+        <script>
+          document.querySelector('.btn-secondary').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the form submission
+
+            Swal.fire({
+              title: 'Konfirmasi',
+              text: 'Apakah Anda yakin batal mengubah anggota?',
+              showCancelButton: true,
+              confirmButtonText: 'Ya',
+              cancelButtonText: 'Tidak',
+              icon: 'warning'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = "{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}";
+              }
             });
-        });
-    </script>  
-@endsection
+          });
+        </script>
+      </form>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

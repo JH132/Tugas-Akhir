@@ -7,9 +7,9 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <a href="{{ route('home') }}">Dashboard/</a>
-                        <a href="{{ route('anggota.index') }}">Anggota</a>
-                        <h1>Tabel Pengguna</h1>
+                        <!-- <a href="{{ route('home') }}">Dashboard/</a>
+                        <a href="{{ route('anggota.index') }}">Anggota</a> -->
+                        <h1>Tabel Anggota</h1>
                     </div>
                     <div class="col-md-6">
                         <!-- Tambahkan search bar di sini -->
