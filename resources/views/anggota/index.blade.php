@@ -7,8 +7,6 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <!-- <a href="{{ route('home') }}">Dashboard/</a>
-                        <a href="{{ route('anggota.index') }}">Anggota</a> -->
                         <h1>Tabel Anggota</h1>
                     </div>
                     <div class="col-md-6">
@@ -49,7 +47,7 @@
                                         <td class="text-center">{{ $anggota->email }}</td>
                                         <td>
                                             <div class="d-flex justify-content-center">
-                                                <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}" class="btn btn-info">Detail</a>
+                                                <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}" class="btn btn-warning text-white">Detail</a>
                                             </div>
                                         </td>
                                     </tr>
