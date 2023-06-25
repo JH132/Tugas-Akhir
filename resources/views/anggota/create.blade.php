@@ -39,7 +39,7 @@
         </div>
           <div class="text-right">
           <a href="{{ route('anggota.index') }}" class="btn btn-secondary" id="cancel-button">Batal</a>
-          <button type="submit" class="btn btn-primary" formaction="{{ route('anggota.index') }}">Simpan</button>
+          <button type="submit" class="btn btn-warning" formaction="{{ route('anggota.index') }}">Simpan</button>
         </div>
       </form>
     </div>
