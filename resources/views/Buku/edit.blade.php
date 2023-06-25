@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="container">
-      <a href="{{ route('dashboard') }}">Dashboard/</a>
+      <a href="{{ route('home') }}">Dashboard/</a>
       <a href="{{ route('buku.index') }}">Buku/</a>
       <a href="{{ route('buku.detail', ['id_buku' => $buku->id_buku]) }}">{{ $buku->judul }}/</a>
       <a href="">Edit</a>

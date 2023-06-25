@@ -7,8 +7,8 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <!-- <a href="{{ route('home') }}">Dashboard/</a>
-                        <a href="{{ route('buku.index') }}">Buku</a> -->
+                        <a href="{{ route('home') }}">Dashboard/</a>
+                        <a href="{{ route('buku.index') }}">Buku</a>
                         <h1>Tabel Buku</h1>
                     </div>
                     <div class="col-md-6">
