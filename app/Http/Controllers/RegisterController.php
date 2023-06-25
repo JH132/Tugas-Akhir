@@ -1,28 +1,45 @@
 <?php
-
 namespace App\Http\Controllers;
 
-// use App\Http\Requests\RegisterRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Anggota;
 
 class RegisterController extends Controller
 {
-    public function create()
+    public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('auth/register');
     }
 
-    public function store()
+    public function register(Request $request)
     {
-        $attributes = request()->validate([
-            'username' => 'required|max:255|min:2',
-            'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|min:5|max:255',
-            'terms' => 'required'
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'email' => 'required|email',
         ]);
-        $user = User::create($attributes);
-        auth()->login($user);
 
-        return redirect('/dashboard');
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $name = $request->input('name');
+        $email = $request->input('email');
+
+        $anggota = Anggota::where('nama', $name)->orWhere('email', $email)->first();
+
+        if ($anggota) {
+            return redirect()->route('login')->with('status', 'User already registered. Please login.');
+        }
+
+        User::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('biodata');
     }
 }
