@@ -34,37 +34,37 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Biodata Form</h1>
               </div>
-              <form action="{{ route('biodata.save') }}" method="POST" class="user">
+              <form action="{{ route('save.anggota') }}" method="POST" class="user">
                 @csrf
                 <div class="form-group">
-                  <input name="name" type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleInputName" placeholder="Name">
-                  @error('name')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                  @enderror
-                </div>
-                <div class="form-group">
-                  <input name="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" placeholder="Email Address">
+                  <input name="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" value="{{ session('email') }}">
                   @error('email')
                     <span class="invalid-feedback">{{ $message }}</span>
                   @enderror
                 </div>
                 <div class="form-group">
-                  <input name="address" type="text" class="form-control form-control-user @error('address') is-invalid @enderror" id="exampleInputAddress" placeholder="Address">
-                  @error('address')
+                  <input name="nama" type="text" class="form-control form-control-user @error('nama') is-invalid @enderror" id="exampleInputName" placeholder="Nama">
+                  @error('nama')
                     <span class="invalid-feedback">{{ $message }}</span>
                   @enderror
                 </div>
                 <div class="form-group">
-                  <input name="phone" type="text" class="form-control form-control-user @error('phone') is-invalid @enderror" id="exampleInputPhone" placeholder="Phone Number">
-                  @error('phone')
+                  <input name="alamat" type="text" class="form-control form-control-user @error('alamat') is-invalid @enderror" id="exampleInputAddress" placeholder="Alamat">
+                  @error('alamat')
                     <span class="invalid-feedback">{{ $message }}</span>
                   @enderror
                 </div>
-                <button type="submit" class="btn btn-primary btn-user btn-block">Save Biodata</button>
+                <div class="form-group">
+                  <input name="nomor_telepon" type="text" class="form-control form-control-user @error('nomor_telepon') is-invalid @enderror" id="exampleInputPhone" placeholder="Nomor Telepon">
+                  @error('nomor_telepon')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                  @enderror
+                </div>
+                <button type="submit" class="btn btn-primary btn-user btn-block">Simpan</button>
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="{{ route('login') }}">Sudah mengisi biodata? Login!</a>
+                <a class="small" href="{{ route('login') }}">Sudah punya akun? Login!</a>
               </div>
             </div>
           </div>

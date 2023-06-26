@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Models\Anggota;
 use App\Models\Buku;
@@ -89,7 +90,37 @@ class AnggotaController extends Controller
 
     return redirect()->route('anggota.index')->with('success', 'Anggota berhasil disimpan.');
 }
+public function store2(Request $request)
+{
+    $this->validate($request, [
+        'nama' => 'required',
+        'alamat' => 'required',
+        'email' => 'required|email',
+        'nomor_telepon' => 'required',
+    ]);
 
+    // Cari pengguna berdasarkan alamat email
+    $user = User::where('email', $request->input('email'))->first();
+
+    if (!$user) {
+        // Jika pengguna tidak ditemukan, kembalikan respon dengan pesan error
+        return redirect()->route('register')->with('error', 'Email tidak ditemukan.');
+    }
+
+    // Buat objek Anggota dan atur nilainya
+    $anggota = new Anggota();
+    $anggota->nama = $request->input('nama');
+    $anggota->alamat = $request->input('alamat');
+    $anggota->email = $request->input('email');
+    $anggota->nomor_telepon = $request->input('nomor_telepon');
+    $anggota->tanggal_bergabung = now();
+    $anggota->id_users = $user->id; // Set nilai id_users dengan id pengguna
+
+    // Simpan objek Anggota
+    $anggota->save();
+
+    return redirect()->route('login')->with('success', 'Anggota berhasil melakukan registrasi.');
+}
 
     public function destroy($id_anggota)
     {

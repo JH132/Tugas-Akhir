@@ -62,8 +62,10 @@ Route::controller(AuthController::class)->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 	// Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	// Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
-	Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-    Route::post('register', [RegisterController::class, 'register'])->name('register.save');
+	Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [AuthController::class, 'register'])->name('register.save');
+	Route::get('register/anggota',  [AuthController::class,'registerAnggota'])->name('register.anggota');
+	Route::post('register/anggota', [AnggotaController::class,'store2'])->name('save.anggota');
     Route::get('/biodata', [BiodataController::class, 'index'])->name('biodata');
     Route::post('/biodata/save', [BiodataController::class, 'store'])->name('biodata.save');
 
