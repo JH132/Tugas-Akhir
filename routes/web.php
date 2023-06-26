@@ -71,7 +71,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'loginAction')->name('login.action');
 
 	// Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
-	Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+	Route::get('/profile', [ProfileController::class, 'show'])->name('home.profile');
 
 
 	// Route::get('/home.index', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');

@@ -68,20 +68,23 @@
         </div>
         <h1>Lihat Peminjaman</h1>
         <br>
-        <div class="row">
-            <div class="col-md-6">
-                <form action="{{ route('peminjaman.index') }}" method="GET">
+        <div class="card-body">
+            <div class="row mb-1">
+                <div class="col-md-6">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Cari peminjaman..." name="search" value="{{ request()->input('search') }}" id="searchInput">
-                        <input type="hidden" name="filter" value="{{ request()->input('filter') }}">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="submit">Cari</button>
-                        </div>
+                        <input type="text" id="searchInput" class="form-control" placeholder="Cari peminjaman...">
                     </div>
-                </form>                
+                </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="searchButton" type="button">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-
         <br>
 
         <table class="table table-striped table-bordered">

@@ -1,9 +1,7 @@
-@extends('layouts.app', ['class' => 'g-sidenav2-show bg-gray-100'])
-use App\Models\Anggota; 
+@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav2', ['title' => 'Profil Anda'])
-    @include('layouts.navbars.auth.sidenav2', ['title' => 'Profil Anda'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Profile'])
     <div class="card shadow-lg mx-4 card-profile-bottom">
         <div class="card-body p-3">
             <div class="row gx-4">
@@ -43,19 +41,13 @@ use App\Models\Anggota;
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Username</label>
-                                        <input class="form-control" type="text" name="username" value="{{ old('username', Anggota::where('user_id', auth()->user()->id)->value('username')) }}">
+                                        <input class="form-control" type="text" name="username" value="{{ old('username', auth()->user()->username) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Email</label>
                                         <input class="form-control" type="email" name="email" value="{{ old('email', auth()->user()->email) }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Nama</label>
-                                        <input class="form-control" type="nama" name="nama" value="{{ old('nama', auth()->user()->nama) }}">
                                     </div>
                                 </div>
                             </div>
@@ -65,22 +57,22 @@ use App\Models\Anggota;
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Alamat</label>
-                                        <input class="form-control" type="text" name="alamat"
-                                            value="{{ old('alamat', auth()->user()->alamat) }}">
+                                        <input class="form-control" type="text" name="address"
+                                            value="{{ old('address', auth()->user()->address) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tanggal Bergabung</label>
-                                        <input class="form-control" type="text" name="tanggal_bergabung"
-                                            value="{{ old('tanggal_bergabung', auth()->user()->tanggal_bergabung) }}">
+                                        <input class="form-control" type="text" name="join_date"
+                                            value="{{ old('join_date', auth()->user()->join_date) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nomor Telepon</label>
-                                        <input class="form-control" type="text" name="no_telepon"
-                                            value="{{ old('no_telepon', auth()->user()->no_telepon) }}">
+                                        <input class="form-control" type="text" name="phone_number"
+                                            value="{{ old('phone_number', auth()->user()->phone_number) }}">
                                     </div>
                                 </div>
                             </div>
