@@ -62,9 +62,8 @@
 <body>
     <div class="container">
         <div class="breadcrumb">
-            <a href="{{ route('home') }}">Dashboard</a> /
-            <a href="{{ route('anggota.index') }}">Anggota</a> /
-            <a href="#">Lihat Peminjaman</a>
+            <a href="{{ route('home') }}">Home</a> /
+            <a href="#">Peminjaman</a>
         </div>
         <h1>Lihat Peminjaman</h1>
         <br>
@@ -90,33 +89,27 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th class="text-center">ID</th>
                     <th class="text-center">Judul Buku</th>
                     <th class="text-center">Tanggal Peminjaman</th>
                     <th class="text-center">Tanggal Pengembalian</th>
                     <th class="text-center">Status</th>
-                  
                 </tr>
             </thead>
             <tbody>
                 @foreach($peminjamans as $peminjaman)
-                    @if (strpos($peminjaman->id_peminjaman, $search) !== false || 
-                        strpos($peminjaman->buku->judul, $search) !== false || 
-                        strpos($peminjaman->tanggal_pengembalian, $search) !== false || 
-                        strpos($peminjaman->status, $search) !== false)
-                        <tr>
-                            <td class="text-center">{{ $peminjaman->id_peminjaman }}</td>
-                            <td class="text-center">{{ $peminjaman->buku->judul }}</td>
-                            <td class="text-center">{{ $peminjaman->tanggal_peminjaman }}</td>
-                            <td class="text-center">{{ $peminjaman->tanggal_pengembalian }}</td>
-                            <td class="text-center">{{ $peminjaman->status}}</td>
-                            </td>
-                            
-                            </td>
-                        </tr>
-                    @endif
+                    <tr>
+                        <td class="text-center">{{ $peminjaman->buku->judul }}</td>
+                        <td class="text-center">{{ $peminjaman->tanggal_peminjaman }}</td>
+                        <td class="text-center">{{ $peminjaman->tanggal_pengembalian }}</td>
+                        <td class="text-center">{{ $peminjaman->status}}</td>
+                    </tr>
                 @endforeach
 
+                @if ($peminjamans->isEmpty())
+                    <tr>
+                        <td colspan="5" class="text-center">Belum ada data peminjaman</td>
+                    </tr>
+                @endif
             </tbody>
         </table>
     </div>
