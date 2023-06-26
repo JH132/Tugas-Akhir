@@ -83,6 +83,9 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 text-right">
+                <a href="{{ route('anggota.createPeminjaman') }}" class="btn btn-primary">Tambah</a>
+            </div>
         </div>
         <br>
 
