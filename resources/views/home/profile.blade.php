@@ -1,7 +1,8 @@
-@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
+@extends('layouts.app', ['class' => 'g-sidenav2-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Profile'])
+    @include('layouts.navbars.auth.topnav2', ['title' => 'Home'])
+    @include('layouts.navbars.auth.sidenav2', ['title' => 'Home'])
     <div class="card shadow-lg mx-4 card-profile-bottom">
         <div class="card-body p-3">
             <div class="row gx-4">
@@ -57,22 +58,22 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Alamat</label>
-                                        <input class="form-control" type="text" name="address"
-                                            value="{{ old('address', auth()->user()->address) }}">
+                                        <input class="form-control" type="text" name="alamat"
+                                            value="{{ $anggota->alamat }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tanggal Bergabung</label>
-                                        <input class="form-control" type="text" name="join_date"
-                                            value="{{ old('join_date', auth()->user()->join_date) }}">
+                                        <input class="form-control" type="text" name="tanggal_bergabung"
+                                            value="{{ $anggota->tanggal_bergabung }}" placeholder="{{ $anggota->tanggal_bergabung }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nomor Telepon</label>
-                                        <input class="form-control" type="text" name="phone_number"
-                                            value="{{ old('phone_number', auth()->user()->phone_number) }}">
+                                        <input class="form-control" type="text" name="nomor_telepon" placeholder="{{ $anggota->nomor_telepon }}"
+                                            value="{{ $anggota->nomor_telepon }}">
                                     </div>
                                 </div>
                             </div>

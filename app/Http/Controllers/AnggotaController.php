@@ -73,16 +73,28 @@ class AnggotaController extends Controller
     public function storePeminjaman(Request $request)
 {
     $this->validate($request, [
-        'id_anggota' => 'required',
         'id_buku' => 'required',
         'tanggal_peminjaman' => 'required',
         'tanggal_pengembalian' => 'required',
     ]);
+    $user = User::find(Auth::id());
+    $anggota = Anggota::where('id_users', $user->id)->first();
+    $id_anggota = $anggota->id_anggota;
 
-    Anggota::createPeminjaman($request->all());
+    $status = 'Diproses';
 
-    return redirect()->route('anggota.index')->with('success', 'Request peminjaman berhasil disimpan.');
+    // Buat instansi Peminjaman
+    $peminjaman = new Peminjaman;
+    $peminjaman->id_anggota = $id_anggota;
+    $peminjaman->id_buku = $request->id_buku;
+    $peminjaman->tanggal_peminjaman = $request->tanggal_peminjaman;
+    $peminjaman->tanggal_pengembalian = $request->tanggal_pengembalian;
+    $peminjaman->status = $status;
+    $peminjaman->save();
+
+    return redirect()->route('anggota.lihatPinjam')->with('success', 'Request peminjaman berhasil disimpan.');
 }
+
 
     public function store(Request $request)
 {
@@ -139,10 +151,17 @@ public function store2(Request $request)
     public function destroy($id_anggota)
     {
         $anggota = Anggota::findOrFail($id_anggota);
+
+        // Hapus semua data peminjaman terkait dengan anggota
+        Peminjaman::where('id_anggota', $id_anggota)->delete();
+
+        // Hapus data anggota
         $anggota->delete();
 
         return redirect()->route('anggota.index')->with('success', 'Anggota berhasil dihapus.');
     }
+
+
 
     public function edit($id_anggota)
     {
