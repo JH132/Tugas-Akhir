@@ -23,7 +23,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword; 
 use App\Http\Controllers\AnggotaController;
@@ -70,8 +70,8 @@ Route::controller(AuthController::class)->group(function () {
 	Route::get('login', 'login')->name('login');
     Route::post('login', 'loginAction')->name('login.action');
 
-	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
-	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
+	Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+	Route::get('/profile', [ProfileController::class, 'show'])->name('profile.update');
 
 
 	// Route::get('/home.index', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
@@ -87,6 +87,8 @@ Route::controller(AuthController::class)->group(function () {
 	Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota.index');
 
 	Route::get('/home/detail', [HomeController::class, 'detail'])->name('home.detail');
+	Route::get('/anggota/lihatPinjam', [AnggotaController::class, 'lihatPinjam'])->name('anggota.lihatPinjam');
+	Route::get('/anggota/createPeminjaman', [AnggotaController::class, 'createPeminjaman'])->name('anggota.createPeminjaman');
 
 	
 });
