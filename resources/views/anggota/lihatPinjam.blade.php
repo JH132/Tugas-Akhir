@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Request Peminjaman</title>
+    <title>Lihat Peminjaman</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <style>
@@ -64,9 +64,9 @@
         <div class="breadcrumb">
             <a href="{{ route('home') }}">Dashboard</a> /
             <a href="{{ route('buku.index') }}">Anggota</a> /
-            <a href="#">Request Peminjaman</a>
+            <a href="#">Lihat Peminjaman</a>
         </div>
-        <h1>Request Peminjaman</h1>
+        <h1>Lihat Peminjaman</h1>
         <br>
         <div class="row">
             <div class="col-md-6">
