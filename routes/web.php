@@ -70,8 +70,9 @@ Route::controller(AuthController::class)->group(function () {
 	Route::get('login', 'login')->name('login');
     Route::post('login', 'loginAction')->name('login.action');
 
+	// Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 	Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
-	Route::get('/profile', [ProfileController::class, 'show'])->name('profile.update');
+
 
 
 	// Route::get('/home.index', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
@@ -113,4 +114,7 @@ Route::get('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'detail'
 Route::delete('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'delete'])->name('peminjaman.delete');
 Route::get('/peminjaman/{id_peminjaman}/edit', [PeminjamanController::class, 'edit'])->name('peminjaman.edit');
 Route::put('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'update'])->name('peminjaman.update');
+Route::get('/buku', [BukuController::class, 'index'])->name('buku.index');
+Route::get('/home/buku', [BukuController::class, 'index'])->name('home.buku');
+
 
