@@ -63,7 +63,7 @@
     <div class="container">
         <div class="breadcrumb">
             <a href="{{ route('home') }}">Dashboard</a> /
-            <a href="{{ route('buku.index') }}">Anggota</a> /
+            <a href="{{ route('anggota.index') }}">Anggota</a> /
             <a href="#">Lihat Peminjaman</a>
         </div>
         <h1>Lihat Peminjaman</h1>
@@ -89,7 +89,6 @@
                 <tr>
                     <th class="text-center">ID</th>
                     <th class="text-center">Judul Buku</th>
-                    <th class="text-center">Nama Anggota</th>
                     <th class="text-center">Tanggal Peminjaman</th>
                     <th class="text-center">Tanggal Pengembalian</th>
                     <th class="text-center">Status</th>
@@ -100,17 +99,14 @@
                 @foreach($peminjamans as $peminjaman)
                     @if (strpos($peminjaman->id_peminjaman, $search) !== false || 
                         strpos($peminjaman->buku->judul, $search) !== false || 
-                        strpos($peminjaman->anggota->nama, $search) !== false || 
                         strpos($peminjaman->tanggal_pengembalian, $search) !== false || 
                         strpos($peminjaman->status, $search) !== false)
                         <tr>
                             <td class="text-center">{{ $peminjaman->id_peminjaman }}</td>
                             <td class="text-center">{{ $peminjaman->buku->judul }}</td>
-                            <td class="text-center">{{ $peminjaman->anggota->nama }}</td>
                             <td class="text-center">{{ $peminjaman->tanggal_peminjaman }}</td>
                             <td class="text-center">{{ $peminjaman->tanggal_pengembalian }}</td>
-                            <td class="text-center">{{$peminjaman->status}}</td>
-                            
+                            <td class="text-center">{{ $peminjaman->status}}</td>
                             </td>
                             
                             </td>

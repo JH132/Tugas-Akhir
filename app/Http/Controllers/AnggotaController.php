@@ -28,9 +28,10 @@ class AnggotaController extends Controller
     }
     public function lihatPinjam(Request $request)
     {
+        $anggotas = Anggota::all();
         $search = $request->input('search');
         $peminjamans = Peminjaman::all();
-        return view('anggota.lihatPinjam', compact('peminjamans', 'search'));
+        return view('anggota.lihatPinjam', compact('peminjamans', 'search', 'anggotas'));
     }
 
 
