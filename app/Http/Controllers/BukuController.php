@@ -95,4 +95,5 @@ public function update(Request $request, $id_buku)
 
     return redirect()->route('buku.detail', ['id_buku' => $buku->id_buku])->with('success', 'Data buku berhasil diperbarui');
 }
+
 }
