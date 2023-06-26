@@ -4,53 +4,86 @@
     <title>Detail Peminjaman</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
-        body{
-            margin: 20px
-        }
-        .modal {
-            display: none;
-            position: fixed;  
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
+        body {
+            margin: 20px;
+            background-color: #f8f9fa;
         }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 30%;
+        /* Header style */
+        h1 {
+            color: #ff6f00;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
+        /* Link style */
+        .breadcrumb a {
+            color: #ff6f00;
             text-decoration: none;
-            cursor: pointer;
+        }
+
+        /* Form container */
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Form field labels */
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Submit button style */
+        .btn-primary {
+            background-color: #ff6f00;
+            border-color: #ff6f00;
+            width: 100px;
+        }
+
+        /* Cancel button style */
+        .btn-secondary {
+            background-color: #444;
+            border-color: #444;
+            width: 100px;
+        }
+
+        /* Button container style */
+        .button-container {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        /* Custom button style */
+        .btn-orange {
+            color: #fff;
+            background-color: orange;
+            border-color: orange;
+            width: 70px;
+        }
+
+        .btn-orange:hover,
+        .btn-orange:focus {
+            color: #fff;
+            background-color: darkorange;
+            border-color: darkorange;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="{{ route('dashboard') }}">Dashboard/</a>
-        <a href="{{ route('peminjaman.index') }}">Peminjaman/</a>
-        <a href="">{{ $peminjaman->id_peminjaman }}</a>
+        <div class="breadcrumb">
+            <a href="{{ route('home') }}">Dashboard</a> /
+            <a href="{{ route('peminjaman.index') }}">Peminjaman</a> /
+            <a href="">{{ $peminjaman->id_peminjaman }}</a>
+        </div>
         <h1>Detail Peminjaman</h1>
         <div class="text-right">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('peminjaman.edit', $peminjaman->id_peminjaman) }}" class="btn btn-info mr-2">Edit</a>
+                <a href="{{ route('peminjaman.edit', $peminjaman->id_peminjaman) }}" class="btn btn-orange mr-2">Edit</a>
                 <form id="deleteForm" action="{{ route('peminjaman.delete', $peminjaman->id_peminjaman) }}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -95,31 +128,27 @@
                 </tr>
             </tbody>
         </table>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>
+        <script>
+            // Fungsi untuk menampilkan pop-up konfirmasi menggunakan SweetAlert
+            function confirmDelete() {
+                Swal.fire({
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin menghapus data buku?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Hapus',
+                    cancelButtonText: 'Batal',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById("deleteForm").submit();
+                    }
+                });
+            }
+        </script>
     </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <!-- Tambahkan SweetAlert CSS dan JavaScript -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>
-
-<!-- Tambahkan kode JavaScript berikut -->
-<script>
-    // Fungsi untuk menampilkan pop-up konfirmasi menggunakan SweetAlert
-    function confirmDelete() {
-        Swal.fire({
-            title: 'Konfirmasi',
-            text: 'Apakah Anda yakin ingin menghapus data peminjaman?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Hapus',
-            cancelButtonText: 'Batal',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById("deleteForm").submit();
-            }
-        });
-    }
-</script>
-
 </body>
 </html>

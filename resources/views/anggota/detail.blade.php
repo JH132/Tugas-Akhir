@@ -76,7 +76,6 @@
 <body>
     <div class="container">
         <div class="breadcrumb">
-<<<<<<< HEAD
             <a href="{{ route('dashboard') }}">Dashboard</a> /
             <a href="{{ route('anggota.index') }}">Anggota</a> /
             <a href="">{{ $anggota->nama }}</a>

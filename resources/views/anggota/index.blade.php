@@ -7,13 +7,10 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <a href="{{ route('home') }}">Dashboard/</a>
-                        <a href="{{ route('anggota.index') }}">Buku</a>
                         <div class="d-flex justify-content-between align-items-center">
                             <h1 class="mb-0">Tabel Anggota</h1>
                             <a href="{{ route('anggota.create') }}" class="btn btn-primary">Tambah Anggota</a>
                         </div>
-                    </div>
                     <div class="card-body">
                         <div class="row mb-1">
                             <div class="col-md-6">
@@ -112,4 +109,4 @@
         margin-left: -1px;
     }
     </style>
-@endsection
+@endsection 

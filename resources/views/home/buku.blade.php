@@ -1,16 +1,34 @@
 @extends('layouts.app', ['class' => 'g-sidenav2-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav2', ['title' => 'Home'])
-    @include('layouts.navbars.auth.sidenav2', ['title' => 'Home'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Buku'])
+    @include('layouts.navbars.auth.sidenav2', ['title' => 'Buku'])
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
-                <div class="card-header pb-0">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h1 class="mb-0">Daftar Buku</h1>
+                    <div class="card-header pb-0">
+                        <a href="{{ route('home') }}">Dashboard/</a>
+                        <a href="{{ route('home.buku') }}">Buku</a>
+                        <h1>Tabel Buku</h1>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Tambahkan search bar di sini -->
+                        <form action="{{ route('buku.index') }}" method="GET">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Cari buku..." name="search" value="{{ request()->input('search') }}" id="searchInput">
+                                <input type="hidden" name="filter" value="{{ request()->input('filter') }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="submit">Cari</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-right">
+                            <a href="{{ route('buku.create') }}" class="btn btn-primary">Tambah Anggota</a>
                         </div>
+                    </div>
                     <br>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -21,7 +39,7 @@
                                         <th class="text-center">Judul</th>
                                         <th class="text-center">Kategori</th>
                                         <th class="text-center">Jumlah Buku</th>
-                                        <!-- <th class="text-center">Aksi</th> -->
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,6 +52,11 @@
                                                 <td class="text-center">{{ $buku->judul }}</td>
                                                 <td class="text-center">{{ $buku->kategori }}</td>
                                                 <td class="text-center">{{ $buku->jumlah_salinan }}</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <a href="{{ route('buku.detail', ['id_buku' => $buku->id_buku]) }}" class="btn btn-warning text-white">Detail</a>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         @endif
                                     @endforeach
@@ -82,3 +105,5 @@
         });
     </script>   
 @endsection
+
+
