@@ -5,17 +5,83 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-      body {
-        margin: 20px;
-      }
+        body {
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+
+        /* Header style */
+        h1 {
+            color: #ff6f00;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Link style */
+        .breadcrumb a {
+            color: #ff6f00;
+            text-decoration: none;
+        }
+
+        /* Form container */
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Form field labels */
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Submit button style */
+        .btn-primary {
+            background-color: #ff6f00;
+            border-color: #ff6f00;
+            width: 100px;
+        }
+
+        /* Cancel button style */
+        .btn-secondary {
+            background-color: #444;
+            border-color: #444;
+            width: 100px;
+        }
+
+        /* Button container style */
+        .button-container {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        /* Custom button style */
+        .btn-orange {
+            color: #fff;
+            background-color: orange;
+            border-color: orange;
+            width: 70px;
+        }
+
+        .btn-orange:hover,
+        .btn-orange:focus {
+            color: #fff;
+            background-color: darkorange;
+            border-color: darkorange;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <a href="{{ route('home') }}">Dashboard/</a>
-      <a href="{{ route('buku.index') }}">Buku/</a>
-      <a href="{{ route('buku.detail', ['id_buku' => $buku->id_buku]) }}">{{ $buku->judul }}/</a>
+        <div class="breadcrumb">
+          <a href="{{ route('dashboard') }}">Dashboard</a>/
+        <a href="{{ route('buku.index') }}">Buku</a>/
+        <a href="{{ route('buku.detail', ['id_buku' => $buku->id_buku]) }}">{{ $buku->judul }}</a>/
       <a href="">Edit</a>
+        </div>
       <h1>Edit Buku</h1>
       <br/>
       <form method="POST" action="{{ route('buku.update', $buku->id_buku) }}">
