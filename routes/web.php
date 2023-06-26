@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Buku2Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,7 +74,8 @@ Route::controller(AuthController::class)->group(function () {
 	// Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 	Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 
-
+	Route::get('/biodata', [BiodataController::class, 'index'])->name('biodata');
+    Route::post('/biodata/save', [BiodataController::class, 'store'])->name('biodata.save');
 
 	// Route::get('/home.index', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
     Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
@@ -108,8 +110,9 @@ Route::put('/buku/{id_buku}', [BukuController::class, 'update'])->name('buku.upd
 
 Route::get('/peminjaman/create', [PeminjamanController::class, 'create'])->name('peminjaman.create');
 Route::post('/peminjaman', [PeminjamanController::class, 'store'])->name('peminjaman.store');
+
 Route::get('/buku', [BukuController::class, 'index'])->name('buku.index');
-Route::get('/home/buku', [BukuController::class, 'index'])->name('home.buku');
+Route::get('/home/buku', [Buku2Controller::class, 'index'])->name('home.buku');
 
 Route::post('/peminjaman/update-status', [PeminjamanController::class, 'updateStatus'])->name('peminjaman.updateStatus');
 Route::get('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'detail'])->name('peminjaman.detail');
