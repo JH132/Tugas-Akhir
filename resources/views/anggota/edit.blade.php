@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="container">
-      <a href="{{ route('home') }}">Dashboard/</a>
+      <a href="{{ route('dashboard') }}">Dashboard/</a>
       <a href="{{ route('anggota.index') }}">Anggota/</a>
       <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}">{{ $anggota->nama }}/</a>
       <a href="">Edit</a>
@@ -22,24 +22,24 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-          <label for="nama">Nama:</label>
+          <label for="nama">Nama</label>
           <input type="text" class="form-control" id="nama" name="nama" value="{{ $anggota->nama }}" required>
         </div>
         <div class="form-group">
-          <label for="alamat">Alamat:</label>
+          <label for="alamat">Alamat</label>
           <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $anggota->alamat }}" required>
         </div>
         <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" name="email" value="{{ $anggota->email }}" required>
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="penerbit" name="penerbit" value="{{ $anggota->email }}" required>
         </div>
         <div class="form-group">
-          <label for="nomor_telepon">Nomor Telepon:</label>
+          <label for="nomor_telepon">Nomor Telepon</label>
           <input type="text" class="form-control" id="nomor_telepon" name="nomor_telepon" value="{{ $anggota->nomor_telepon }}" required>
         </div>
         <div class="form-group">
-          <label for="tanggal_bergabung">Tanggal Bergabung:</label>
-          <input type="date" class="form-control" id="tanggal_bergabung" name="tanggal_bergabung" value="{{ $anggota->tanggal_bergabung }}" required>
+          <label for="tanggal_bergabung">Tanggal Bergabung</label>
+          <input type="text" class="form-control" id="tanggal_bergabung" name="tanggal_bergabung" value="{{ $anggota->tanggal_bergabung }}" required>
         </div>
         <div class="text-right">
           <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}" class="btn btn-secondary">Batal</a>
@@ -51,7 +51,7 @@
 
             Swal.fire({
               title: 'Konfirmasi',
-              text: 'Apakah Anda yakin batal mengubah anggota?',
+              text: 'Apakah Anda yakin batal mengubah data anggota?',
               showCancelButton: true,
               confirmButtonText: 'Ya',
               cancelButtonText: 'Tidak',

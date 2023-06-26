@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="container">
-      <a href="{{ route('home') }}">Dashboard/</a>
+      <a href="{{ route('dashboard') }}">Dashboard/</a>
         <a href="{{ route('anggota.index') }}">Anggota/</a>
         <a href="">Tambah</a>
       <h1>Tambah Anggota</h1>
