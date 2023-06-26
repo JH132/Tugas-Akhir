@@ -45,6 +45,11 @@
                                     <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password">
                                     @error('password') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
+                                <div class="flex flex-col mb-3">
+                                    <input name="password_confirmation" type="password" class="form-control form-control-user @error('password_confirmation')is-invalid @enderror" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                    @error('password_confirmation') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+
+                                  </div>
                                 <div class="form-check form-check-info text-start">
                                     <input class="form-check-input" type="checkbox" name="terms" id="flexCheckDefault" >
                                     <label class="form-check-label" for="flexCheckDefault">
