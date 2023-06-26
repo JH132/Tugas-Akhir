@@ -1,22 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Request Peminjaman</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <style>
       body {
         margin: 20px;
+        background-color: #f8f9fa;
+      }
+
+      /* Header style */
+      h1 {
+        color: #ff6f00;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      /* Link style */
+      .breadcrumb a {
+        color: #ff6f00;
+        text-decoration: none;
+      }
+
+      /* Form container */
+      .form-container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      }
+
+      /* Form field labels */
+      .form-group label {
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* Submit button style */
+      .btn-primary {
+        background-color: #ff6f00;
+        border-color: #ff6f00;
+        width: 100px;
+      }
+
+      /* Cancel button style */
+      .btn-secondary {
+        background-color: #444;
+        border-color: #444;
+        width: 100px;
+      }
+
+      /* Button container style */
+      .button-container {
+        margin-top: 20px;
+        text-align: right;
       }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <a href="{{ route('dashboard') }}">Dashboard/</a>
-      <a href="{{ route('peminjaman.index') }}">Peminjaman/</a>
-      <a href="">Tambah</a>
+        <div class="breadcrumb">
+            <a href="{{ route('home') }}">Dashboard</a> /
+            <a href="{{ route('buku.index') }}">Anggota</a> /
+            <a href="#">Peminjaman</a>
+        </div>
       <h1>Request Peminjaman</h1>
-      <form method="POST" action="{{ route('peminjaman.store') }}">
+      <form method="POST" action="{{ route('anggota.store') }}">
         @csrf
         <div class="form-group">
           <label for="id_buku">ID Buku:</label>

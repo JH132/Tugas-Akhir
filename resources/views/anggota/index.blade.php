@@ -7,6 +7,8 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
+                        <a href="{{ route('home') }}">Dashboard/</a>
+                        <a href="{{ route('anggota.index') }}">Buku</a>
                         <div class="d-flex justify-content-between align-items-center">
                             <h1 class="mb-0">Tabel Anggota</h1>
                             <a href="{{ route('anggota.create') }}" class="btn btn-primary">Tambah Anggota</a>
@@ -38,25 +40,25 @@
                                     <th class="text-center">Nomor Telepon</th>
                                     <th class="text-center">Email</th>
                                     <th class="text-center">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($anggotas as $anggota)
-                                    <tr>
-                                        <td class="text-center">{{ $anggota->id_anggota }}</td>
-                                        <td class="text-center">{{ $anggota->nama }}</td>
-                                        <td class="text-center">{{ $anggota->nomor_telepon }}</td>
-                                        <td class="text-center">{{ $anggota->email }}</td>
-                                        <td class="text-center">
-                                            <div class="d-flex justify-content-center">
-                                                <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}" class="btn btn-warning">Detail</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($anggotas as $anggota)
+                                <tr>
+                                    <td class="text-center">{{ $anggota->id_anggota }}</td>
+                                    <td class="text-center">{{ $anggota->nama }}</td>
+                                    <td class="text-center">{{ $anggota->nomor_telepon }}</td>
+                                    <td class="text-center">{{ $anggota->email }}</td>
+                                    <td class="text-center">
+                                        <div class="d-flex justify-content-center">
+                                            <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}" class="btn btn-warning text-white">Detail</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                     </div>
                 </div>
             </div>
