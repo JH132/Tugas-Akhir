@@ -60,11 +60,9 @@
   </head>
   <body>
     <div class="container">
-        <div class="breadcrumb">
-            <a href="{{ route('home') }}">Dashboard</a> /
-            <a href="{{ route('anggota.index') }}">Buku</a> /
-            <a href="#">Tambah</a>
-        </div>
+      <a href="{{ route('dashboard') }}">Dashboard/</a>
+        <a href="{{ route('anggota.index') }}">Anggota/</a>
+        <a href="">Tambah</a>
       <h1>Tambah Anggota</h1>
       <form method="POST" action="{{ route('anggota.store') }}">
         @csrf

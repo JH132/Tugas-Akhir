@@ -76,9 +76,10 @@
 <body>
     <div class="container">
         <div class="breadcrumb">
-            <a href="{{ route('home') }}">Dashboard</a> /
-            <a href="{{ route('anggota.index') }}">Buku</a> /
-            <a href="#">Edit</a>
+<<<<<<< HEAD
+            <a href="{{ route('dashboard') }}">Dashboard</a> /
+            <a href="{{ route('anggota.index') }}">Anggota</a> /
+            <a href="">{{ $anggota->nama }}</a>
         </div>
         <h1>Detail Anggota</h1>
         <div class="text-right">
@@ -91,7 +92,7 @@
             </form>
             </div>
         </div>
-        <br>  
+        <br>
         <table class="table">
             <tbody>
                 <tr>
@@ -120,7 +121,6 @@
                 </tr>
             </tbody>
         </table>
-    
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>
         <script>
@@ -153,3 +153,5 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+

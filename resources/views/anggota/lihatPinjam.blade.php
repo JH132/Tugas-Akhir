@@ -7,7 +7,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <a href="{{ route('home') }}">Dashboard/</a>
+                        <a href="{{ route('dashboard') }}">Dashboard/</a>
                         <a href="{{ route('anggota.index') }}">Anggota</a>
                         <h1>Tambah Anggota</h1>
                     </div>

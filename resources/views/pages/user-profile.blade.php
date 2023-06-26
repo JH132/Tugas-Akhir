@@ -13,7 +13,7 @@
                 <div class="col-auto my-auto">
                     <div class="h-100">
                     <h5 class="mb-1">
-                        {{ $anggota->nama ?? 'Nama' }}
+                        {{ $username->username ?? auth()->user()->username }}
                     </h5>
                     </div>
                 </div>
@@ -41,19 +41,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Username</label>
-                                        <input class="form-control" type="text" name="username" value="{{ old('username') }}">
+                                        <input class="form-control" type="text" name="username" value="{{ old('username', auth()->user()->username) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Email</label>
-                                        <input class="form-control" type="email" name="email" value="{{ old('email') }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Nama</label>
-                                        <input class="form-control" type="text" name="firstname"  value="{{ old('firstname') }}">
+                                        <input class="form-control" type="email" name="email" value="{{ old('email', auth()->user()->email) }}">
                                     </div>
                                 </div>
                             </div>

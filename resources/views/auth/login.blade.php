@@ -16,7 +16,7 @@
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">
                                 <div class="card-body">
-                                    <form role="form" method="POST" action="{{ route('login.perform') }}">
+                                    <form role="form" method="POST" action="{{ route('login.action') }}">
                                         @csrf
                                         @method('post')
                                         <div class="flex flex-col mb-3">

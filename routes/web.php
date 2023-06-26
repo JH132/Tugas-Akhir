@@ -21,12 +21,15 @@ Route::get('/', function () {
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword; 
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota.index');
@@ -42,6 +45,7 @@ Route::get('/anggota/{id_anggota}/edit', [AnggotaController::class, 'edit'])->na
 Route::put('/anggota/{id_anggota}', [AnggotaController::class, 'update'])->name('anggota.update');
 
 Route::get('/buku', [BukuController::class, 'index'])->name('buku.index');
+Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.index');
             
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
@@ -53,14 +57,27 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
+	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 	
-Route::group(['middleware' => 'auth'], function () {
+Route::controller(AuthController::class)->group(function () {
 	// Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	// Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
-	Route::get('/', [HomeController::class, 'index'])->name('home');
+	Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [RegisterController::class, 'register'])->name('register.save');
+    Route::get('/biodata', [BiodataController::class, 'index'])->name('biodata');
+    Route::post('/biodata/save', [BiodataController::class, 'store'])->name('biodata.save');
+
+	Route::get('login', 'login')->name('login');
+    Route::post('login', 'loginAction')->name('login.action');
+
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
+
+
+	// Route::get('/home.index', [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
+    Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
+
 	// Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static'); 
 	// Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
 	// Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static'); 
@@ -68,6 +85,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 	Route::get('/anggota', [AnggotaController::class, 'index'])->name('angggota');
 	Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota.index');
+
+	Route::get('/home/detail', [HomeController::class, 'detail'])->name('home.detail');
+
 	
 });
 
@@ -78,8 +98,17 @@ Route::get('/buku/create', [BukuController::class, 'create'])->name('buku.create
 Route::post('/buku', [BukuController::class, 'store'])->name('buku.store');
 Route::delete('/buku/delete/{id}', [BukuController::class, 'destroy'])->name('buku.delete');
 // Route::get('/buku', 'BukuController@index')->name('buku.index');
-Route::get('/buku', [BukuController::class, 'index'])->name('buku.index');
+// Route::get('/buku', [BukuController::class, 'index'])->name('buku.index');
 Route::get('/buku/{id_buku}', [BukuController::class, 'detail'])->name('buku.detail');
 Route::get('/buku/{id_buku}/edit', [BukuController::class, 'edit'])->name('buku.edit');
 Route::put('/buku/{id_buku}', [BukuController::class, 'update'])->name('buku.update');
+
+Route::get('/peminjaman/create', [PeminjamanController::class, 'create'])->name('peminjaman.create');
+Route::post('/peminjaman', [PeminjamanController::class, 'store'])->name('peminjaman.store');
+
+Route::post('/peminjaman/update-status', [PeminjamanController::class, 'updateStatus'])->name('peminjaman.updateStatus');
+Route::get('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'detail'])->name('peminjaman.detail');
+Route::delete('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'delete'])->name('peminjaman.delete');
+Route::get('/peminjaman/{id_peminjaman}/edit', [PeminjamanController::class, 'edit'])->name('peminjaman.edit');
+Route::put('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'update'])->name('peminjaman.update');
 
