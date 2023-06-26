@@ -86,7 +86,9 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'username' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed'
+            'password' => 'required|min:8|confirmed'
+        ], [
+            'password.min' => 'Password harus terdiri dari minimal 8 karakter.'
         ]);
 
         if ($validator->fails()) {

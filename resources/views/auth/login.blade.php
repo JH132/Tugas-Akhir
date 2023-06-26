@@ -20,8 +20,8 @@
                                         @csrf
                                         @method('post')
                                         <div class="flex flex-col mb-3">
-                                        <label for="password" class="text-sm">Email</label>
-                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" value="{{ old('email') }}" aria-label="Email">
+                                        <label for="email" class="text-sm">Email</label>
+                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email">
                                             @error('email')
                                                 <p class="text-danger text-xs pt-1"> Email yang dimasukkan tidak valid </p>
                                             @enderror
@@ -29,7 +29,7 @@
                                         <div class="flex flex-col mb-3">
                                             <label for="password" class="text-sm">Password</label>
                                             <input type="password" name="password" class="form-control form-control-lg" aria-label="Password" placeholder="Password">
-                                            @error('email')
+                                            @error('password')
                                                 <p class="text-danger text-xs pt-1">Password yang dimasukkan tidak valid</p>
                                             @enderror
                                         </div>
