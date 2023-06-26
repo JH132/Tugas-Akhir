@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Models\Buku;
 
@@ -22,7 +23,7 @@ class BukuController extends Controller
     
         $bukus = $bukus->get();
     
-        return view('Buku.index', compact('bukus'));
+        return view('buku.index', compact('bukus'));
     }
     
 
@@ -34,11 +35,11 @@ public function detail($id_buku)
         abort(404); // Tampilkan halaman 404 jika buku tidak ditemukan
     }
 
-    return view('Buku.detail', compact('buku'));
+    return view('buku.detail', compact('buku'));
 }
   public function create()
 {
-    return view('Buku.create');
+    return view('buku.create');
 }
 public function store(Request $request)
 {
@@ -55,23 +56,27 @@ public function store(Request $request)
     ]);
 
     Buku::create($request->all());
-    return redirect()->route('Buku.index')->with('succes', 'Buku berhasil disimpan');
+    return redirect()->route('buku.index')->with('succes', 'Buku berhasil disimpan');
 
 }
 
     public function destroy($id_buku)
     {
         $buku = Buku::findOrFail($id_buku);
+
+        // Periksa apakah ada data peminjaman terkait dengan buku
+        $peminjaman = Peminjaman::where('id_buku', $id_buku)->delete();
+
+        // Hapus data buku
         $buku->delete();
 
-        return redirect()->route('Buku.index')->with('success', 'Buku berhasil dihapus.');
+        return redirect()->route('buku.index')->with('success', 'Buku berhasil dihapus.');
     }
-
     public function edit($id_buku)
 {
     $buku = Buku::findOrFail($id_buku);
 
-    return view('Buku.edit', compact('buku'));
+    return view('buku.edit', compact('buku'));
 }
 
 public function update(Request $request, $id_buku)
@@ -94,7 +99,7 @@ public function update(Request $request, $id_buku)
     // Simpan perubahan
     $buku->save();
 
-    return redirect()->route('Buku.detail', ['id_buku' => $buku->id_buku])->with('success', 'Data buku berhasil diperbarui');
+    return redirect()->route('buku.detail', ['id_buku' => $buku->id_buku])->with('success', 'Data buku berhasil diperbarui');
 }
 
 }

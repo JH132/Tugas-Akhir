@@ -67,15 +67,10 @@
         </div>
         <h1>Lihat Peminjaman</h1>
         <br>
-        <div class="card-body">
-            <div class="row mb-1">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <input type="text" id="searchInput" class="form-control" placeholder="Cari peminjaman...">
-                    </div>
-                </div>
+        <div class="row mb-1">
             <div class="col-md-6">
                 <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Cari peminjaman...">
                     <div class="input-group-append">
                         <button class="btn btn-primary" id="searchButton" type="button">
                             <i class="fa fa-search"></i> Search

@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use App\Models\Anggota;
 
 class ProfileController extends Controller
 {
     public function show()
     {
-        return view('home.profile');
+        $anggota = Auth::user();
+        return view('home.profile', compact('anggota'));
     }
 
     public function update(Request $request)

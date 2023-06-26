@@ -67,7 +67,7 @@
             <a href="#">Peminjaman</a>
         </div>
       <h1>Request Peminjaman</h1>
-      <form method="POST" action="{{ route('anggota.store') }}">
+      <form method="POST" action="{{ route('anggota.storePeminjaman') }}">
         @csrf
         <div class="form-group">
           <label for="id_buku">ID Buku:</label>
@@ -87,8 +87,8 @@
           <input type="date" class="form-control" id="tanggal_pengembalian" name="tanggal_pengembalian" required>
         </div>
         <div class="text-right">
-          <a href="{{ route('peminjaman.index') }}" class="btn btn-secondary" id="cancel-button">Batal</a>
-          <button type="submit" class="btn btn-primary" formaction="{{ route('peminjaman.index') }}">Simpan</button>
+          <a href="{{ route('anggota.lihatPinjam') }}" class="btn btn-secondary" id="cancel-button">Batal</a>
+          <button type="submit" class="btn btn-primary" formaction="{{ route('anggota.storePeminjaman') }}">Simpan</button>
         </div>
       </form>
     </div>
@@ -107,7 +107,7 @@
         }).then((result) => {
           if (result.isConfirmed) {
             // Handle cancellation logic here if confirmed
-            window.location.href = "{{ route('peminjaman.index') }}";
+            window.location.href = "{{ route('anggota.lihatPinjam') }}";
           }
         });
       });
