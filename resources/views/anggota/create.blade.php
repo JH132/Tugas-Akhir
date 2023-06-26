@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tambah Anggota</title>
+<head>
+    <title>Tambah Buku</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <style>
       body {
         margin: 20px;
@@ -57,12 +58,14 @@
         text-align: right;
       }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <a href="{{ route('dashboard') }}">Dashboard/</a>
-        <a href="{{ route('anggota.index') }}">Anggota/</a>
-        <a href="">Tambah</a>
+        <div class="breadcrumb">
+            <a href="{{ route('home') }}">Dashboard</a> /
+            <a href="{{ route('anggota.index') }}">Anggota</a> /
+            <a href="#">Tambah</a>
+        </div>
       <h1>Tambah Anggota</h1>
       <form method="POST" action="{{ route('anggota.store') }}">
         @csrf

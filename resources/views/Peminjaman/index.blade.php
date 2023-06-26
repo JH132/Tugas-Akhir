@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Peminjaman'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Anggota'])
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -11,12 +11,11 @@
                             <h1 class="mb-0">Tabel Peminjaman</h1>
                             <a href="{{ route('peminjaman.create') }}" class="btn btn-primary">Tambah Peminjaman</a>
                         </div>
-                    </div>
                     <div class="card-body">
                         <div class="row mb-1">
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <input type="text" id="searchInput" class="form-control" placeholder="Cari anggota...">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Cari peminjaman...">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -30,10 +29,10 @@
                             </div>
                         </div>
                     </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
                                     <th class="text-center">ID</th>
                                     <th class="text-center">Judul Buku</th>
                                     <th class="text-center">Nama Anggota</th>
@@ -43,7 +42,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($peminjamans as $peminjaman)
+                                @foreach($peminjamans as $peminjaman)
                                         @if (strpos($peminjaman->id_peminjaman, $search) !== false || 
                                             strpos($peminjaman->buku->judul, $search) !== false || 
                                             strpos($peminjaman->anggota->nama, $search) !== false || 
@@ -63,7 +62,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href="{{ route('peminjaman.detail', ['id_peminjaman' => $peminjaman->id_peminjaman]) }}" class="btn btn-info">Detail</a>
+                                                        <a href="{{ route('peminjaman.detail', ['id_peminjaman' => $peminjaman->id_peminjaman]) }}" class="btn btn-warning">Detail</a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -134,4 +133,4 @@
             });
         });
     </script>
-@endsection
+@endsection 

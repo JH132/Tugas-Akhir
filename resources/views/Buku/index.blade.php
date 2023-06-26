@@ -7,33 +7,32 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <a href="{{ route('home') }}">Dashboard/</a>
-                        <a href="{{ route('buku.index') }}">Buku</a>
-                        <h1>Tabel Buku</h1>
-                    </div>
-                    <div class="col-md-6">
-                        <!-- Tambahkan search bar di sini -->
-                        <form action="{{ route('buku.index') }}" method="GET">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Cari buku..." name="search" value="{{ request()->input('search') }}" id="searchInput">
-                                <input type="hidden" name="filter" value="{{ request()->input('filter') }}">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="submit">Cari</button>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h1 class="mb-0">Tabel Buku</h1>
+                            <a href="{{ route('buku.create') }}" class="btn btn-primary">Tambah Buku</a>
+                        </div>
+                    <div class="card-body">
+                        <div class="row mb-1">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Cari buku...">
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="text-right">
-                            <a href="{{ route('buku.create') }}" class="btn btn-primary">Tambah Anggota</a>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" id="searchButton" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <br>
-                    <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
                                         <th class="text-center">ID</th>
                                         <th class="text-center">Judul</th>
                                         <th class="text-center">Kategori</th>
@@ -102,7 +101,22 @@
                 });
             });
         });
-    </script>   
+        <style>
+    .input-group {
+        width: 100%;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .input-group-append {
+        display: flex;
+        padding-left: 8px; /* Menambahkan space kosong menggunakan padding kiri */
+    }
+
+    .input-group-append .btn {
+        margin-left: -1px;
+    }
+    </style>
 @endsection
-
-
