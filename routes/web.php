@@ -108,13 +108,14 @@ Route::put('/buku/{id_buku}', [BukuController::class, 'update'])->name('buku.upd
 
 Route::get('/peminjaman/create', [PeminjamanController::class, 'create'])->name('peminjaman.create');
 Route::post('/peminjaman', [PeminjamanController::class, 'store'])->name('peminjaman.store');
+Route::get('/buku', [BukuController::class, 'index'])->name('buku.index');
+Route::get('/home/buku', [BukuController::class, 'index'])->name('home.buku');
 
 Route::post('/peminjaman/update-status', [PeminjamanController::class, 'updateStatus'])->name('peminjaman.updateStatus');
 Route::get('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'detail'])->name('peminjaman.detail');
 Route::delete('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'delete'])->name('peminjaman.delete');
 Route::get('/peminjaman/{id_peminjaman}/edit', [PeminjamanController::class, 'edit'])->name('peminjaman.edit');
 Route::put('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'update'])->name('peminjaman.update');
-Route::get('/buku', [BukuController::class, 'index'])->name('buku.index');
-Route::get('/home/buku', [BukuController::class, 'index'])->name('home.buku');
+
 
 
