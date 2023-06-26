@@ -83,8 +83,8 @@
         <h1>Detail Peminjaman</h1>
         <div class="text-right">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('buku.edit', $buku->id_buku) }}" class="btn btn-orange mr-2">Edit</a>
-                <form id="deleteForm" action="{{ route('buku.delete', $buku->id_buku) }}" method="POST">
+                <a href="{{ route('peminjaman.edit', $peminjaman->id_peminjaman) }}" class="btn btn-orange mr-2">Edit</a>
+                <form id="deleteForm" action="{{ route('peminjaman.delete', $peminjaman->id_peminjaman) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="button" class="btn btn-danger" onclick="confirmDelete()">Hapus</button>

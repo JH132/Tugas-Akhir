@@ -55,6 +55,7 @@ public function store(Request $request)
     ]);
 
     Buku::create($request->all());
+    return redirect()->route('buku.index')->with('succes', 'Buku berhasil disimpan');
 
 }
 

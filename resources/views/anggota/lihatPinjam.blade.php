@@ -109,8 +109,8 @@
                             <td class="text-center">{{ $peminjaman->anggota->nama }}</td>
                             <td class="text-center">{{ $peminjaman->tanggal_peminjaman }}</td>
                             <td class="text-center">{{ $peminjaman->tanggal_pengembalian }}</td>
-                            <td class="text-center">
-                                <input type="text" class="form-control status-input" value="Diproses" disabled>
+                            <td class="text-center">{{$peminjaman->status}}</td>
+                            
                             </td>
                             
                             </td>
