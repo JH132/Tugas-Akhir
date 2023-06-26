@@ -57,9 +57,9 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 	
 Route::controller(AuthController::class)->group(function () {
+	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 	// Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	// Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
 	Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -82,7 +82,7 @@ Route::controller(AuthController::class)->group(function () {
 	// Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
 	// Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static'); 
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
-	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+	Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 	Route::get('/anggota', [AnggotaController::class, 'index'])->name('angggota');
 	Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota.index');
 
