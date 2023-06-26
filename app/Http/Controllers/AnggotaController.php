@@ -74,7 +74,7 @@ class AnggotaController extends Controller
     $this->validate($request, [
         'nama' => 'required',
         'alamat' => 'required',
-        'email' => 'required|email',
+        'email' => 'required',
         'nomor_telepon' => 'required',
         'tanggal_bergabung' => 'required',
     ]);
@@ -107,23 +107,29 @@ class AnggotaController extends Controller
     }
 
     public function update(Request $request, $id_anggota)
-    {
-        $anggota = Anggota::findOrFail($id_anggota);
-        
-        // Lakukan validasi data yang dikirimkan melalui $request jika diperlukan
+{
+    $anggota = Anggota::findOrFail($id_anggota);
+    
+    // Lakukan validasi data yang dikirimkan melalui $request jika diperlukan
 
-        // Update data anggota
-        $anggota->nama = $request->input('nama');
-        $anggota->alamat = $request->input('alamat');
-        $anggota->email = $request->input('email');
-        $anggota->nomor_telepon = $request->input('nomor_telepon');
-        $anggota->tanggal_bergabung = $request->input('tanggal_bergabung');
+    // Update data anggota
+    $anggota->nama = $request->input('nama');
+    $anggota->alamat = $request->input('alamat');
+    $anggota->nomor_telepon = $request->input('nomor_telepon');
+    $anggota->tanggal_bergabung = $request->input('tanggal_bergabung');
 
-        // Update atribut lainnya
-
-        // Simpan perubahan
-        $anggota->save();
-
-        return redirect()->route('anggota.detail', ['id_anggota' => $anggota->id_anggota])->with('success', 'Data anggota berhasil diperbarui');
+    // Periksa apakah input 'email' tidak kosong sebelum menyimpan
+    $email = $request->input('email');
+    if (!empty($email)) {
+        $anggota->email = $email;
     }
+
+    // Update atribut lainnya
+
+    // Simpan perubahan
+    $anggota->save();
+
+    return redirect()->route('anggota.detail', ['id_anggota' => $anggota->id_anggota])->with('success', 'Data anggota berhasil diperbarui');
+}
+
 }
