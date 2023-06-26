@@ -76,6 +76,7 @@
 <body>
     <div class="container">
         <div class="breadcrumb">
+<<<<<<< HEAD
             <a href="{{ route('dashboard') }}">Dashboard</a> /
             <a href="{{ route('anggota.index') }}">Anggota</a> /
             <a href="">{{ $anggota->nama }}</a>
@@ -83,7 +84,7 @@
         <h1>Detail Anggota</h1>
         <div class="text-right">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('anggota.edit', $anggota->id_anggota) }}" class="btn btn-info mr-2">Edit</a>
+                <a href="{{ route('anggota.edit', $anggota->id_anggota) }}" class="btn btn-orange mr-2">Edit</a>
                 <form  id="deleteForm" action="{{ route('anggota.delete', $anggota->id_anggota) }}" method="POST">
                     @csrf
                     @method('DELETE')
