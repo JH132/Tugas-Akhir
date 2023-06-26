@@ -78,9 +78,9 @@
         <div class="breadcrumb">
             <a href="{{ route('home') }}">Dashboard</a> /
             <a href="{{ route('buku.index') }}">Buku</a> /
-            <a href="#">Tambah</a>
+            <a href="#">Detail</a>
         </div>
-        <h1>Tambah Buku</h1>
+        <h1>Detail Buku</h1>
         <div class="text-right">
             <div class="d-flex justify-content-end">
                 <a href="{{ route('buku.edit', $buku->id_buku) }}" class="btn btn-orange mr-2">Edit</a>
