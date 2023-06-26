@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Anggota;
+use App\Models\Buku;
+use App\Models\Peminjaman;
 
 class AnggotaController extends Controller
 {
