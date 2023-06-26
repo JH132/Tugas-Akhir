@@ -21,7 +21,7 @@
                                         @method('post')
                                         <div class="flex flex-col mb-3">
                                         <label for="email" class="text-sm">Email</label>
-                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email">
+                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" value="{{ old('email') }}" aria-label="Email">
                                             @error('email')
                                                 <p class="text-danger text-xs pt-1"> Email yang dimasukkan tidak valid </p>
                                             @enderror

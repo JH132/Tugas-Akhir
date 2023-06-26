@@ -86,9 +86,10 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'username' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|confirmed|min:8|regex:/^(?=.*[0-9])[a-zA-Z0-9]+$/'
         ], [
-            'password.min' => 'Password harus terdiri dari minimal 8 karakter.'
+            'password.min' => 'Password harus memiliki setidaknya 8 karakter',
+            'password.regex' => 'Password harus mengandung angka'
         ]);
 
         if ($validator->fails()) {

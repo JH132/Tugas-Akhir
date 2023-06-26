@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Anggota;
 use App\Models\Buku;
 use App\Models\Peminjaman;
+use Illuminate\Support\Facades\Auth;
 
 class AnggotaController extends Controller
 {
@@ -29,10 +30,22 @@ class AnggotaController extends Controller
     }
     public function lihatPinjam(Request $request)
     {
-        $anggotas = Anggota::all();
+        $userId = Auth::id();
+
+        // Mengambil data peminjaman yang berkaitan dengan anggota yang sedang login
+        $peminjamans = Peminjaman::whereHas('anggota', function ($query) use ($userId) {
+            $query->where('id_users', $userId);
+        })->get();
+
+        // $anggotas = Anggota::all();
         $search = $request->input('search');
-        $peminjamans = Peminjaman::all();
-        return view('anggota.lihatPinjam', compact('peminjamans', 'search', 'anggotas'));
+        if ($search) {
+            $peminjamans->whereHas('buku', function ($query) use ($search) {
+                $query->where('judul', 'LIKE', '%' . $search . '%');
+            });
+        }
+        // $peminjamans = Peminjaman::all();
+        return view('anggota.lihatPinjam', compact('peminjamans', 'search'));
     }
 
 
