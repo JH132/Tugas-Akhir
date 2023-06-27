@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Models\Buku;
 
@@ -62,11 +63,15 @@ public function store(Request $request)
     public function destroy($id_buku)
     {
         $buku = Buku::findOrFail($id_buku);
+
+        // Periksa apakah ada data peminjaman terkait dengan buku
+        $peminjaman = Peminjaman::where('id_buku', $id_buku)->delete();
+
+        // Hapus data buku
         $buku->delete();
 
         return redirect()->route('buku.index')->with('success', 'Buku berhasil dihapus.');
     }
-
     public function edit($id_buku)
 {
     $buku = Buku::findOrFail($id_buku);

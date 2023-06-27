@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
+@extends('layouts.app', ['class' => 'g-sidenav2-show bg-gray-100'])
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Your Profile'])
@@ -58,21 +58,21 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Alamat</label>
                                         <input class="form-control" type="text" name="alamat"
-                                            value="{{ old('alamat', auth()->user()->alamat) }}">
+                                            value="{{ $anggota->alamat }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tanggal Bergabung</label>
                                         <input class="form-control" type="text" name="tanggal_bergabung"
-                                            value="{{ old('tanggal_bergabung', auth()->user()->tanggal_bergabung) }}">
+                                            value="{{ $anggota->tanggal_bergabung }}" placeholder="{{ $anggota->tanggal_bergabung }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nomor Telepon</label>
-                                        <input class="form-control" type="text" name="nomor_telepon"
-                                            value="{{ old('nomor_telepon', auth()->user()->nomor_telepon) }}">
+                                        <input class="form-control" type="text" name="nomor_telepon" placeholder="{{ $anggota->nomor_telepon }}"
+                                            value="{{ $anggota->nomor_telepon }}">
                                     </div>
                                 </div>
                             </div>

@@ -65,59 +65,51 @@
             <a href="{{ route('home') }}">Home</a> /
             <a href="#">Peminjaman</a>
         </div>
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
+        <h1>Lihat Peminjaman</h1>
+        <br>
+        <div class="row mb-1">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Cari peminjaman...">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="searchButton" type="button">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3 text-right">
+            <div class="col-md-6 text-right">
                 <a href="{{ route('anggota.createPeminjaman') }}" class="btn btn-primary">Tambah</a>
             </div>
         </div>
         <br>
-        <div class="card-body">
-            <div class="row mb-1">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <input type="text" id="searchInput" class="form-control" placeholder="Cari peminjaman...">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" id="searchButton" type="button">
-                                <i class="fa fa-search"></i> Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th class="text-center">Judul Buku</th>
-                        <th class="text-center">Tanggal Peminjaman</th>
-                        <th class="text-center">Tanggal Pengembalian</th>
-                        <th class="text-center">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($peminjamans as $peminjaman)
-                        <tr>
-                            <td class="text-center">{{ $peminjaman->buku->judul }}</td>
-                            <td class="text-center">{{ $peminjaman->tanggal_peminjaman }}</td>
-                            <td class="text-center">{{ $peminjaman->tanggal_pengembalian }}</td>
-                            <td class="text-center">{{ $peminjaman->status}}</td>
-                        </tr>
-                    @endforeach
 
-                    @if ($peminjamans->isEmpty())
-                        <tr>
-                            <td colspan="5" class="text-center">Belum ada data peminjaman</td>
-                        </tr>
-                    @endif
-                </tbody>
-            </table>
-        </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Judul Buku</th>
+                    <th class="text-center">Tanggal Peminjaman</th>
+                    <th class="text-center">Tanggal Pengembalian</th>
+                    <th class="text-center">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($peminjamans as $peminjaman)
+                    <tr>
+                        <td class="text-center">{{ $peminjaman->buku->judul }}</td>
+                        <td class="text-center">{{ $peminjaman->tanggal_peminjaman }}</td>
+                        <td class="text-center">{{ $peminjaman->tanggal_pengembalian }}</td>
+                        <td class="text-center">{{ $peminjaman->status}}</td>
+                    </tr>
+                @endforeach
+
+                @if ($peminjamans->isEmpty())
+                    <tr>
+                        <td colspan="5" class="text-center">Belum ada data peminjaman</td>
+                    </tr>
+                @endif
+            </tbody>
+        </table>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
