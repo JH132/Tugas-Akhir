@@ -1,8 +1,8 @@
 @extends('layouts.app', ['class' => 'g-sidenav2-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav2', ['title' => 'Home'])
-    @include('layouts.navbars.auth.sidenav2', ['title' => 'Home'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Your Profile'])
+    @include('layouts.navbars.auth.sidenav2', ['title' => 'Your Profile'])
     <div class="card shadow-lg mx-4 card-profile-bottom">
         <div class="card-body p-3">
             <div class="row gx-4">
@@ -13,9 +13,9 @@
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
-                    <h5 class="mb-1">
-                        {{ $username->username ?? auth()->user()->username }}
-                    </h5>
+                        <h5 class="mb-1">
+                            {{ auth()->user()->username ?? auth()->user()->username }}
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,6 @@
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Ubah Profil</p>
-                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Simpan</button>
                             </div>
                         </div>
                         <div class="card-body">

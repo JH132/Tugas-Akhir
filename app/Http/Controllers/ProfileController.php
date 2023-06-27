@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
-use App\Models\Anggota;
 
 class ProfileController extends Controller
 {
     public function show()
     {
-        $anggota = Auth::user();
-        return view('home.profile', compact('anggota'));
+        return view('home.user-profile');
     }
+
+    public function profile()
+{
+    $anggota = Auth::guard('anggota')->user(); // Retrieve the currently logged-in member
+
+    return view('profile', compact('anggota')); // Pass the $anggota variable to the view
+}
 
     public function update(Request $request)
     {
