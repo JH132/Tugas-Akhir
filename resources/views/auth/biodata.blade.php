@@ -36,12 +36,12 @@
               </div>
               <form action="{{ route('save.anggota') }}" method="POST" class="user">
                 @csrf
-                <div class="form-group">
-                  <input name="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" value="{{ session('email') }}">
-                  @error('email')
+                {{-- <div class="form-group"> --}}
+                  <input name="email" type="hidden" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" value="{{ session('email') }}" >
+                  {{-- @error('email')
                     <span class="invalid-feedback">{{ $message }}</span>
                   @enderror
-                </div>
+                </div> --}}
                 <div class="form-group">
                   <input name="nama" type="text" class="form-control form-control-user @error('nama') is-invalid @enderror" id="exampleInputName" placeholder="Nama">
                   @error('nama')
@@ -63,9 +63,6 @@
                 <button type="submit" class="btn btn-primary btn-user btn-block">Simpan</button>
               </form>
               <hr>
-              <div class="text-center">
-                <a class="small" href="{{ route('login') }}">Sudah punya akun? Login!</a>
-              </div>
             </div>
           </div>
         </div>
