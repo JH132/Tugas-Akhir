@@ -4,13 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
     public function show()
     {
-        return view('home.profile');
+        return view('home.user-profile');
     }
+
+    public function profile()
+{
+    $anggota = Auth::guard('anggota')->user(); // Retrieve the currently logged-in member
+
+    return view('profile', compact('anggota')); // Pass the $anggota variable to the view
+}
 
     public function update(Request $request)
     {

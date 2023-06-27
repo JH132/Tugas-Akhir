@@ -76,7 +76,7 @@
 <body>
     <div class="container">
         <div class="breadcrumb">
-            <a href="{{ route('home') }}">Dashboard</a> /
+            <a href="{{ route('dashboard') }}">Dashboard</a> /
             <a href="{{ route('peminjaman.index') }}">Peminjaman</a> /
             <a href="">{{ $peminjaman->id_peminjaman }}</a>
         </div>

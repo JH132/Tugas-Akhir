@@ -11,24 +11,22 @@
                             <h1 class="mb-0">Tabel Peminjaman</h1>
                             <a href="{{ route('peminjaman.create') }}" class="btn btn-primary">Tambah Peminjaman</a>
                         </div>
-                    <div class="card-body">
+                        <div class="card-body">
                         <div class="row mb-1">
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <input type="text" id="searchInput" class="form-control" placeholder="Cari peminjaman...">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Cari buku...">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" id="searchButton" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button>
+                                        <button class="btn btn-primary" id="searchButton" type="button">Search</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead>

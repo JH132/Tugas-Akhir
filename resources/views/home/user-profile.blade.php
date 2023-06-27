@@ -1,7 +1,8 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Profile'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Your Profile'])
+    @include('layouts.navbars.auth.sidenav2', ['title' => 'Your Profile'])
     <div class="card shadow-lg mx-4 card-profile-bottom">
         <div class="card-body p-3">
             <div class="row gx-4">
@@ -12,9 +13,9 @@
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
-                    <h5 class="mb-1">
-                        {{ $username->username ?? auth()->user()->username }}
-                    </h5>
+                        <h5 class="mb-1">
+                            {{ auth()->user()->username ?? auth()->user()->username }}
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -32,7 +33,6 @@
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Ubah Profil</p>
-                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Simpan</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -57,22 +57,22 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Alamat</label>
-                                        <input class="form-control" type="text" name="address"
-                                            value="{{ old('address', auth()->user()->address) }}">
+                                        <input class="form-control" type="text" name="alamat"
+                                            value="{{ old('alamat', auth()->user()->alamat) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tanggal Bergabung</label>
-                                        <input class="form-control" type="text" name="join_date"
-                                            value="{{ old('join_date', auth()->user()->join_date) }}">
+                                        <input class="form-control" type="text" name="tanggal_bergabung"
+                                            value="{{ old('tanggal_bergabung', auth()->user()->tanggal_bergabung) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nomor Telepon</label>
-                                        <input class="form-control" type="text" name="phone_number"
-                                            value="{{ old('phone_number', auth()->user()->phone_number) }}">
+                                        <input class="form-control" type="text" name="nomor_telepon"
+                                            value="{{ old('nomor_telepon', auth()->user()->nomor_telepon) }}">
                                     </div>
                                 </div>
                             </div>

@@ -11,19 +11,17 @@
                             <h1 class="mb-0">Tabel Anggota</h1>
                             <a href="{{ route('anggota.create') }}" class="btn btn-primary">Tambah Anggota</a>
                         </div>
-                    <div class="card-body">
+                        <div class="card-body">
                         <div class="row mb-1">
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <input type="text" id="searchInput" class="form-control" placeholder="Cari anggota...">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Cari Anggota...">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" id="searchButton" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button>
+                                        <button class="btn btn-primary" id="searchButton" type="button">Search</button>
                                     </div>
                                 </div>
                             </div>
@@ -42,17 +40,22 @@
                             </thead>
                             <tbody>
                                 @foreach($anggotas as $anggota)
-                                <tr>
-                                    <td class="text-center">{{ $anggota->id_anggota }}</td>
-                                    <td class="text-center">{{ $anggota->nama }}</td>
-                                    <td class="text-center">{{ $anggota->nomor_telepon }}</td>
-                                    <td class="text-center">{{ $anggota->email }}</td>
-                                    <td class="text-center">
-                                        <div class="d-flex justify-content-center">
-                                            <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}" class="btn btn-warning text-white">Detail</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    @if (strpos(strtolower($anggota->id_anggota), strtolower(request()->input('search'))) !== false
+                                        || strpos(strtolower($anggota->nama), strtolower(request()->input('search'))) !== false
+                                        || strpos(strtolower($anggota->nomor_telepon), strtolower(request()->input('search'))) !== false
+                                        || strpos(strtolower($anggota->email), strtolower(request()->input('search'))) !== false)
+                                        <tr>
+                                            <td class="text-center">{{ $anggota->id_anggota }}</td>
+                                            <td class="text-center">{{ $anggota->nama }}</td>
+                                            <td class="text-center">{{ $anggota->nomor_telepon }}</td>
+                                            <td class="text-center">{{ $anggota->email }}</td>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ route('anggota.detail', ['id_anggota' => $anggota->id_anggota]) }}" class="btn btn-warning text-white">Detail</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>
@@ -63,35 +66,44 @@
         </div>
     </div>
     <script>
-        $(document).ready(function() {
-            $('#searchButton').on('click', function() {
-                var input, filter, table, tr, td, i, txtValue;
-                input = $('#searchInput').val();
-                filter = input.toLowerCase();
-                table = $("table");
-                tr = table.find('tbody tr'); // Ubah hanya mencari tr di dalam tbody
-                tr.each(function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            var searchInput = document.getElementById('searchInput');
+            var searchButton = document.getElementById('searchButton');
+            var table = document.querySelector('table');
+            var rows = table.querySelectorAll('tbody tr');
+
+            searchButton.addEventListener('click', function() {
+                filterTable();
+            });
+
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.which === 13) {
+                    filterTable();
+                    return false;
+                }
+            });
+
+            function filterTable() {
+                var filter = searchInput.value.toLowerCase();
+                rows.forEach(function(row) {
+                    var cells = row.getElementsByTagName('td');
                     var match = false;
-                    $(this).find('td').each(function() {
-                        td = $(this);
-                        if (td) {
-                            txtValue = td.text().toLowerCase();
-                            if (txtValue.indexOf(filter) > -1) {
-                                match = true;
-                                return false; // Berhenti perulangan saat ada kecocokan
-                            }
+                    Array.from(cells).forEach(function(cell) {
+                        var text = cell.textContent.toLowerCase();
+                        if (text.indexOf(filter) > -1) {
+                            match = true;
                         }
                     });
                     if (match) {
-                        $(this).show();
+                        row.style.display = '';
                     } else {
-                        $(this).hide();
+                        row.style.display = 'none';
                     }
                 });
-            });
+            }
         });
     </script>
-    <style>
+    <!-- <style>
     .input-group {
         width: 100%;
     }
@@ -102,11 +114,11 @@
 
     .input-group-append {
         display: flex;
-        padding-left: 8px; /* Menambahkan space kosong menggunakan padding kiri */
+        padding-left: 8px; 
     }
 
     .input-group-append .btn {
         margin-left: -1px;
     }
-    </style>
+    </style> -->
 @endsection 

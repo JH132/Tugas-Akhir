@@ -115,7 +115,7 @@ Route::get('/peminjaman/create', [PeminjamanController::class, 'create'])->name(
 Route::post('/peminjaman', [PeminjamanController::class, 'store'])->name('peminjaman.store');
 
 Route::get('/buku', [BukuController::class, 'index'])->name('buku.index');
-Route::get('/home/buku', [Buku2Controller::class, 'index'])->name('home.buku');
+// Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 
 Route::post('/peminjaman/update-status', [PeminjamanController::class, 'updateStatus'])->name('peminjaman.updateStatus');
 Route::get('/peminjaman/{id_peminjaman}', [PeminjamanController::class, 'detail'])->name('peminjaman.detail');

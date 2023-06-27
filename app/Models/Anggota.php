@@ -27,4 +27,5 @@ class Anggota extends Model
     public function peminjamans(){
     return $this->hasMany(Peminjaman::class, 'id_anggota');
     }
+
 }
