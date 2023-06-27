@@ -2,6 +2,17 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Peminjaman'])
+
+    <style>
+        .search-form {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            margin-right: 10px;
+        }
+    </style>
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -11,22 +22,27 @@
                             <h1 class="mb-0">Tabel Peminjaman</h1>
                             <a href="{{ route('peminjaman.create') }}" class="btn btn-primary">Tambah Peminjaman</a>
                         </div>
-                        <div class="card-body">
+                    <div class="card-body">
                         <div class="row mb-1">
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <input type="text" id="searchInput" class="form-control" placeholder="Cari buku...">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" id="searchButton" type="button">Search</button>
+                            <form action="{{ route('peminjaman.index') }}" method="GET" class="search-form">
+                                <div class="col-md-6 search-input">
+                                    <div class="input-group">
+                                        <input type="text" name="search" value="{{ request()->input('search') }}" id="searchInput" class="form-control" placeholder="Cari peminjaman...">
+                                        <input type="hidden" name="filter" value="{{ request()->input('filter') }}">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" id="searchButton" type="submit">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>                        
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead>

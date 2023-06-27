@@ -1,66 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="https://github.com/fathiamaliah/pemweb/blob/cd05ae3ca746bf99a9b4c3612b871672f3866adb/4.png" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# RentBook
 
-## About Laravel
+RentBook adalah sebuah website yang memungkinkan anggota untuk mencari, melihat ketersediaan buku yang tersedia untuk dipinjam, dan meminjam buku-buku yang tersedia. Untuk admin, yang tersedia adalah laman dashboard,  buku, anggota, dan peminjaman dan untuk anggota tersedia laman home, peminjaman untuk anggota, dan profil. Selain itu,  admin di sini memiliki akses tambahan untuk melihat, mengedit, dan menambah  seluruh data pada website, sedangkan anggota hanya dapat melihat dan mencari data serta hanya bisa melakukan create pada laman peminjaman untuk anggota.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Login dan Register
+   - Anggota terlebih dahulu harus login untuk mengakses laman-laman yang ada untuk angggota. Apabila tidak memiliki akun, anggota harus melakukan resgister.
+   - Admin dapat memasukkan akun beserta kredensialnya agar dapat divalidasi keautentikasiannya.
+     
+2. Filter Search
+   - Anggota dapat menggunakan fitur filter search untuk mencari buku berdasarkan id, judul, kategori, dan jumlah buku.
+   - Anggota dapat menggunakan fitur filter search untuk mencari peminjaman yang telah dibuat berdasarkan judul buku, tanggal peminjaman, tanggal pengembalian, dan status.
+   - Hasil pencarian akan menampilkan daftar buku dan peminjaman yang sesuai dengan kriteria yang dimasukkan.
+   - Admin juga dapat melakukan search pada laman buku, anggota, dan peminjaman.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. Pembatasan Akses Anggota
+   - Anggota hanya dapat melihat data buku dan menggunakan fitur filter search.
+   - Anggota tidak dapat mengedit atau menambahkan data buku dan anggota karena tidak memiliki akses.
+   - Anggota hanya bisa menambahkan data peminjaman dengan menambahkan data peminjaman yang bisa diakses oleh anggota.
 
-## Learning Laravel
+4. Manajemen Admin
+   - Admin memiliki akses tambahan untuk melihat, mengedit, dan menambah data pada website.
+   - Admin dapat melakukan CRUD (Create, Read, Update, Delete) terhadap entitas Anggota, Buku, dan Peminjaman.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+5. Entitas Website
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+   - Anggota: Menyimpan informasi tentang Anggota, seperti id, nama, alamat, email, nomor telepon, dan tanggal bergabung.
+   - Buku: Menyimpan informasi tentang buku, seperti id, judul, pengarang/penulis, penerbit, tahun terbit, kategori, deskripsi, jumlah salinan/jumlah buku  dan isbn.
+   - Peminjaman: Menyimpan informasi tentang peminjaman buku, termasuk id peminjaman, id anggota,  nama anggota, id buku, judul buku, tanggal peminjaman, tanggal          pengembalian, dan status.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+6. CRUD Operations
 
-## Laravel Sponsors
+   - Anggota:
+     - Create: Admin dapat menambahkan anggota baru ke dalam sistem.
+     - Read: Admin dapat melihat daftar anggota yang terdaftar.
+     - Update: Admin dapat mengubah informasi anggota.
+     - Delete: Admin dapat menghapus anggota dari sistem.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+   - Buku:
+     - Create: Admin dapat menambahkan buku baru ke dalam sistem.
+     - Read: anggota dan admin dapat melihat daftar buku yang tersedia.
+     - Update: Admin dapat mengubah informasi buku.
+     - Delete: Admin dapat menghapus buku dari sistem.
 
-### Premium Partners
+   - Peminjaman:
+     - Create: Admin dapat membuat entri peminjaman baru untuk anggota yang meminjam buku.
+     - Read: Pengguna dan admin dapat melihat daftar peminjaman yang terjadi.
+     - Update: Admin dapat mengubah status peminjaman.
+     - Delete: Admin dapat menghapus entri peminjaman.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Teknologi yang Digunakan
 
-## Contributing
+RentBook dibangun dengan menggunakan kombinasi berbagai teknologi, termasuk:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Bahasa pemrograman: PHP
+- Framework web: Laravel 
+- Database: PHPMyAdmin
+- Additioanl: HTML, CSS, JavaScrip=
 
-## Code of Conduct
+## Instalasi dan Penggunaan
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Berikut adalah langkah-langkah untuk menjalankan RentBook di lingkungan pengembangan lokal:
 
-## Security Vulnerabilities
+1. Pastikan Python (versi 3.x) sudah terinstal di komputer Anda.
+2. Clone repositori RentBook ke direktori lokal Anda.
+3. Masuk ke direktori proyek menggunakan terminal atau command prompt.
+4. Buat dan aktifkan virtual environment (opsional, tetapi disarankan).
+5. Instal dependensi yang diperlukan dengan menjalankan perintah: `pip install -r requirements.txt`.
+6. Lakukan migrasi database dengan perintah: `python manage.py migrate`.
+7. Jalankan server pengembangan dengan perintah: `python manage.py runserver`.
+8. Buka browser dan akses http://localhost:8000 untuk mengakses RentBook.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Pastikan Anda telah memiliki MySQL atau PostgreSQL yang terinstal jika ingin menggunakan database tersebut sebagai pengganti SQLite.
 
-## License
+## Kontribusi
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Jika Anda ingin berkontribusi pada RentBook, silakan ikuti langkah-langkah berikut:
+
+1. Fork repositori RentBook ke akun GitHub Anda.
+2. Clone repositori hasil fork ke komputer lokal Anda.
+3. Buat branch baru untuk fitur atau perbaikan tertentu.
+4. Lakukan perubahan yang diperlukan.
+5. Commit dan push perubahan ke branch di repositori GitHub Anda.
+6. Ajukan pull request untuk menggabungkan perubahan ke repositori utama.
+Pastikan untuk menjelaskan dengan jelas perubahan yang Anda usulkan dalam pull request!
+
+Terima kasih telah menggunakan RentBook! Jika Anda memiliki pertanyaan atau masukan, jangan ragu untuk menghubungi kami melalui halaman kontak di website ini.
