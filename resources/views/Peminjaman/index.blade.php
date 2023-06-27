@@ -57,11 +57,14 @@
                                 </thead>
                                 <tbody>
                                 @foreach($peminjamans as $peminjaman)
-                                        @if (strpos($peminjaman->id_peminjaman, $search) !== false || 
-                                            strpos($peminjaman->buku->judul, $search) !== false || 
-                                            strpos($peminjaman->anggota->nama, $search) !== false || 
-                                            strpos($peminjaman->tanggal_pengembalian, $search) !== false || 
-                                            strpos($peminjaman->status, $search) !== false)
+                                        @php
+                                            $search = strtolower(request()->input('search')); // Mengubah pencarian menjadi lowercase
+                                        @endphp
+                                        @if (preg_match("/$search/i", $peminjaman->id_peminjaman) || 
+                                            preg_match("/$search/i", $peminjaman->buku->judul) || 
+                                            preg_match("/$search/i", $peminjaman->anggota->nama) || 
+                                            preg_match("/$search/i", $peminjaman->tanggal_pengembalian) || 
+                                            preg_match("/$search/i", $peminjaman->status))
                                             <tr>
                                                 <td class="text-center">{{ $peminjaman->id_peminjaman }}</td>
                                                 <td class="text-center">{{ $peminjaman->buku->judul }}</td>
