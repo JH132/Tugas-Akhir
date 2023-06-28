@@ -58,22 +58,7 @@ RentBook dibangun dengan menggunakan kombinasi berbagai teknologi, termasuk:
 - Bahasa pemrograman: PHP
 - Framework web: Laravel 
 - Database: PHPMyAdmin
-- Additioanl: HTML, CSS, JavaScrip=
-
-## Instalasi dan Penggunaan
-
-Berikut adalah langkah-langkah untuk menjalankan RentBook di lingkungan pengembangan lokal:
-
-1. Pastikan Python (versi 3.x) sudah terinstal di komputer Anda.
-2. Clone repositori RentBook ke direktori lokal Anda.
-3. Masuk ke direktori proyek menggunakan terminal atau command prompt.
-4. Buat dan aktifkan virtual environment (opsional, tetapi disarankan).
-5. Instal dependensi yang diperlukan dengan menjalankan perintah: `pip install -r requirements.txt`.
-6. Lakukan migrasi database dengan perintah: `python manage.py migrate`.
-7. Jalankan server pengembangan dengan perintah: `python manage.py runserver`.
-8. Buka browser dan akses http://localhost:8000 untuk mengakses RentBook.
-
-Pastikan Anda telah memiliki MySQL atau PostgreSQL yang terinstal jika ingin menggunakan database tersebut sebagai pengganti SQLite.
+- Additioanl: HTML, CSS, JavaScript
 
 ## Kontribusi
 
