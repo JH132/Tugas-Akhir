@@ -55,14 +55,19 @@ RentBook adalah sebuah website yang memungkinkan anggota untuk mencari, melihat 
 
      - Tampilan Laman Login:
        ![Login Page](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/login%20page.jpeg)
+       
      - Tampilan Laman Dashboard Home Anggota:
        ![Home](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Tampilan%20Daashboard%20Anggota.jpeg)
+       
      - Tampilan Profil Anggota:
        ![Profile](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Halaman%20Profil%20Anggota.jpeg)
+       
      - Halaman Request Peminjaman Anggota:
-       ![Request](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Halaman%Create%20Peminjaman%20Anggota.jpeg)
+       ![Request](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Halaman%20Create%20Peminjaman%20Anggota.jpeg)
+       
      - Halaman Lihat Peminjaman Anggota:
-       ![LihatPinjam](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Halaman%Lihat%20Peminjaman%20Anggota.jpeg)
+       ![LihatPinjam](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Halaman%20Lihat%20Peminjaman%20Anggota.jpeg)
+       
      - Halaman Dashboard Admin
        ![Dashboard](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Halaman%20Dashboard%20Admin.jpeg)
 
