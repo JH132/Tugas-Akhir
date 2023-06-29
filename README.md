@@ -50,6 +50,21 @@ RentBook adalah sebuah website yang memungkinkan anggota untuk mencari, melihat 
      - Read: Pengguna dan admin dapat melihat daftar peminjaman yang terjadi.
      - Update: Admin dapat mengubah status peminjaman.
      - Delete: Admin dapat menghapus entri peminjaman.
+       
+7. Beberapa Tampilan Website
+
+     - Tampilan Laman Login:
+       ![Login Page](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/login%20page.jpeg)
+     - Tampilan Laman Dashboard Home Anggota:
+       ![Home](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Tampilan%20Daashboard%20Anggota.jpeg)
+     - Tampilan Profil Anggota:
+       ![Profile](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Halaman%20Profil%20Anggota.jpeg)
+     - Halaman Request Peminjaman Anggota:
+       ![Request](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Halaman%Create%20Peminjaman%20Anggota.jpeg)
+     - Halaman Lihat Peminjaman Anggota:
+       ![LihatPinjam](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Halaman%Lihat%20Peminjaman%20Anggota.jpeg)
+     - Halaman Dashboard Admin
+       ![Dashboard](https://github.com/fathiamaliah/pemweb/blob/5d21185e299c089755c0f6dbf7731dd7a399df3e/Halaman%20Dashboard%20Admin.jpeg)
 
 ## Teknologi yang Digunakan
 
@@ -58,7 +73,7 @@ RentBook dibangun dengan menggunakan kombinasi berbagai teknologi, termasuk:
 - Bahasa pemrograman: PHP
 - Framework web: Laravel 
 - Database: PHPMyAdmin
-- Additioanl: HTML, CSS, JavaScript
+- Additioanl: HTML, CSS, JavaScript, Blade
 
 ## Kontribusi
 
